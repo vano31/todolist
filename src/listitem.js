@@ -9,9 +9,24 @@ let project = function(title) {
 
     let type = "project"
     let itemArray = [];
+
+    let orderBytype = function() {
+
+        for (let x = 0; x < itemArray.length; x++) {
+            if (itemArray[x].type === 'project') {
+
+                let projectitem = itemArray.splice(x,1);
+                itemArray.unshift(projectitem);
+
+            }
+        } 
+    }
+
+
     let addItem = function(item) {
 
         itemArray.push(item);
+        orderBytype();
 
     }
 
@@ -24,6 +39,7 @@ let project = function(title) {
                 if (itemArray[x].title === item.title) {
 
                     itemArray.splice(x,1);
+                    orderBytype();
                     break;
 
                 }
@@ -33,6 +49,8 @@ let project = function(title) {
             //correctly
         }
     }
+  
+
     return {type, title, addItem, removeItem, itemArray};
 }
 

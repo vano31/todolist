@@ -16,7 +16,25 @@ schoolstuff.addItem(doHomework);
 
 console.log(schoolstuff);
 
+///////////////////////////////////////////////////
+
 let goku = 'son goku';
+
+window.goku = goku;
+
+window.schoolstuff = schoolstuff;
+
+window. writeEssay = writeEssay;
+
+window.startDrawinng = startDrawinng;
+
+window.doHomework = doHomework;
+
+///////////////////////////////////////////////////////
+
+
+
+
 
 
 

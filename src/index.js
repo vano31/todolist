@@ -8,15 +8,37 @@ let newitem = document.createElement('button');
 newitem.textContent = 'Click to Create new Item';
 newitem.onclick = function() {
 
-    let newtype = prompt('What type of object is this?');
+    //let newtype = prompt('What type of object is this?');
     let newtitle =  prompt('What is the title?');
     let newdescription = prompt('What is the description?');
-    let newduedate = prompt('What is the due date?');
-    let newduetime = prompt('What is the due time?');
+    //let newduedate = prompt('What is the due date?');
+    //let newduetime = prompt('What is the due time?');
 
-    let newlistItem = listItem(newtype, newtitle, newdescription, newduedate, newduetime);
+    //Just divide the newduedate variable into month, date, and year prompts.
+
+    let duemonth = prompt('What month is this item due?');
+    let duedateofthemonth = prompt(`What date is this item due in ${duemonth}?`);
+    let dueyear = prompt('What year is this item due? ');
+
+    //Once divided, insert those values into a brand new newduedate
+
+    let newduedate = `${duemonth}/${duedateofthemonth}/${dueyear}`;
+
+    //Also divide newduetime into hour and minute (24 hour time)
+
+    let duehour = prompt('What hour is this due (Use 24-hour military time)');
+    let dueminute = prompt(`This item is due on ${duehour}: `);
+
+
+    //Once divided, insert those values into a brand new newduetime
+    let newduetime = `${duehour}:${dueminute}`;
+
+
+    //In listitem.js, add a parameter to the listitem object and project
+    //object that records the date of creation and subsequent update dates and times
     
-
+    let newlistItem = listItem(newtitle, newdescription, newduedate, newduetime);
+    
     let oldSavedMasterArrayJSON = localStorage.getItem('masterArray');
 
     if (oldSavedMasterArrayJSON) {

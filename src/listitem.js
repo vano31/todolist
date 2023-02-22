@@ -1,6 +1,6 @@
 
 let listItem = function(title, description, dueDate, dueTime) {
-    let type = "list-item"
+    let type = "list-item";
     return {type, title, description, dueDate, dueTime}
 
 }

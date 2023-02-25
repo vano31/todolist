@@ -1,7 +1,13 @@
 
-let listItem = function(title, description, dueDate, dueTime) {
+let listItem = function(title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute) {
     let type = "list-item";
-    return {type, title, description, dueDate, dueTime}
+
+
+    //Use sethours
+    let correctdueDate = new Date(dueYear, dueMonth, dueDay, dueHour, dueMinute);
+    //let correctdueTime = correctdueDate.setHours(dueTime);
+
+    return {type, title, description, correctdueDate /*correctdueTime*/}
 
 }
 

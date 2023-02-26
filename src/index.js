@@ -45,32 +45,41 @@ newitem.onclick = function() {
     let newlistItem = listItem(newtitle, newdescription, newdueyear, newduemonth, newduedateofthemonth, newduehour, newdueminute);
     
     let oldSavedMasterArrayJSON = localStorage.getItem('masterArray');
+    let oldSavedMasterArray = JSON.parse(oldSavedMasterArrayJSON);
+    //console.log(oldSavedMasterArray)
+
+    if (oldSavedMasterArrayJSON && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) {
+
+        masterArray.addItem(newlistItem);
+        localStorage.clear();
+        let equalMasterArrayJSON = JSON.stringify(masterArray);
+        localStorage.setItem('masterArray', equalMasterArrayJSON);
+
+    } else {
+
+        if (oldSavedMasterArrayJSON) {
+        
+            for (let x = 0; x < (oldSavedMasterArray.itemArray).length; x++) {
+                masterArray.addItem(oldSavedMasterArray.itemArray[x]);
+            }
     
-
-    if (oldSavedMasterArrayJSON) {
-
-
-        let oldSavedMasterArray = JSON.parse(oldSavedMasterArrayJSON);
-        for (let x = 0; x < (oldSavedMasterArray.itemArray).length; x++) {
-            masterArray.addItem(oldSavedMasterArray.itemArray[x]);
+            masterArray.addItem(newlistItem);
+            
+            let newSavedMasterArrayJSON = JSON.stringify(masterArray);
+            localStorage.setItem('masterArray', newSavedMasterArrayJSON);
+    
+        }   else {
+    
+            masterArray.addItem(newlistItem);
+            let newJSON = JSON.stringify(masterArray);
+            localStorage.setItem('masterArray', newJSON);
+    
         }
 
-        masterArray.addItem(newlistItem);
-        
-        let newSavedMasterArrayJSON = JSON.stringify(masterArray);
-        localStorage.setItem('masterArray', newSavedMasterArrayJSON);
-
-    }   else {
-
-        masterArray.addItem(newlistItem);
-        let newJSON = JSON.stringify(masterArray);
-        localStorage.setItem('masterArray', newJSON);
 
     }
 
-
     console.log(JSON.parse(localStorage.getItem('masterArray')));
-
 
 
 }

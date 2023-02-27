@@ -4,10 +4,10 @@ let listItem = function(title, description, dueYear, dueMonth, dueDay, dueHour, 
 
 
     //Use sethours
-    let correctdueDate = new Date(dueYear, dueMonth, dueDay, dueHour, dueMinute);
+    let correctdueDate = new Date(parseFloat(dueYear), parseFloat(dueMonth -1), parseFloat(dueDay), parseFloat(dueHour), parseFloat(dueMinute));
     //let correctdueTime = correctdueDate.setHours(dueTime);
 
-    return {type, title, description, correctdueDate /*correctdueTime*/}
+    return {type, title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute, correctdueDate /*correctdueTime*/}
 
 }
 

@@ -4,6 +4,7 @@ import {listItem, project} from './listitem.js'
 //via dropdown, and tab for mixing projects and items based on date
 
 let masterArray = project('Master List');
+//console.log(masterArray);
 
 //Just load master array in the beginning of each page load?
 
@@ -45,12 +46,18 @@ newitem.onclick = function() {
     let newlistItem = listItem(newtitle, newdescription, newdueyear, newduemonth, newduedateofthemonth, newduehour, newdueminute);
     
     let oldSavedMasterArrayJSON = localStorage.getItem('masterArray');
-    let oldSavedMasterArray = JSON.parse(oldSavedMasterArrayJSON);
+    let oldSavedMasterArray = JSON.parse(oldSavedMasterArrayJSON, function(key, value) {
+        if (key == 'correctdueDate') return new Date(value);
+        return value;
+    });
     //console.log(oldSavedMasterArray)
 
     if (oldSavedMasterArrayJSON && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) {
 
         masterArray.addItem(newlistItem);
+
+        //console.log(masterArray)
+
         localStorage.clear();
         let equalMasterArrayJSON = JSON.stringify(masterArray);
         localStorage.setItem('masterArray', equalMasterArrayJSON);
@@ -64,6 +71,8 @@ newitem.onclick = function() {
             }
     
             masterArray.addItem(newlistItem);
+
+            //console.log(masterArray)
             
             let newSavedMasterArrayJSON = JSON.stringify(masterArray);
             localStorage.setItem('masterArray', newSavedMasterArrayJSON);
@@ -71,6 +80,9 @@ newitem.onclick = function() {
         }   else {
     
             masterArray.addItem(newlistItem);
+
+            //console.log(masterArray)
+
             let newJSON = JSON.stringify(masterArray);
             localStorage.setItem('masterArray', newJSON);
     
@@ -79,7 +91,10 @@ newitem.onclick = function() {
 
     }
 
-    console.log(JSON.parse(localStorage.getItem('masterArray')));
+    console.log(JSON.parse(localStorage.getItem('masterArray'), function (key, value) {
+        if (key === 'correctdueDate') return new Date(value);
+        return value;
+    }));
 
 
 }

@@ -1,4 +1,5 @@
-import {listItem, project} from './listitem.js'
+import {listItem, project} from './listitem.js';
+import './style.css';
 
 //Make a separate tab for projects only, tabs for list only, tab for tab deciding
 //via dropdown, and tab for mixing projects and items based on date
@@ -88,14 +89,12 @@ newitem.onclick = function() {
     
         }
 
-
     }
 
     console.log(JSON.parse(localStorage.getItem('masterArray'), function (key, value) {
         if (key === 'correctdueDate') return new Date(value);
         return value;
     }));
-
 
 }
 document.body.appendChild(newitem);
@@ -117,7 +116,6 @@ displayStorageButton.textContent = 'Display Currect Storage';
 displayStorageButton.onclick = function() {
 
     console.log(JSON.parse(localStorage.getItem('masterArray')));
-
 }
 document.body.appendChild(displayStorageButton);
 

@@ -4,14 +4,14 @@
     height: 100%;
     margin: 0;
     border-style: solid;
-    border-color: red;
+    border-color: black;
 
 
 }
 
 .wrapper {
 
-    background-color: green;
+    background-color: wheat;
     display: grid;
     grid-template-columns: 1fr 7fr;
 
@@ -19,7 +19,7 @@
 
 #sidebar {
 
-    background-color: yellow;
+    background-color: lightslategray;
     grid-column: 1 / 2;
 
     display: grid;
@@ -29,7 +29,7 @@
 
 #addsection {
 
-    background-color: brown;
+    background-color: black;
     grid-row: 1 / 2;
 
 }
@@ -46,7 +46,7 @@
 
 #mainsection {
 
-    background-color: blue;
+    background-color: wheat;
     grid-column: 2 / 3;
 
     display: grid;
@@ -59,7 +59,7 @@
 
 #searchsection {
 
-    background-color: green;
+    background-color: gray;
     grid-row: 1 / 2;
 
 

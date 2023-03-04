@@ -31,7 +31,6 @@ let page = function() {
 
     ////////////////////////////////////////////////////////////////////////////////
 
-
     let linkforAll = document.createElement('button');
     linkforAll.textContent = 'Show All';
     linkforAll.id = 'linkforAll';
@@ -52,15 +51,9 @@ let page = function() {
     linkforPriority.id = 'linkforPriority';
     listsection.appendChild(linkforPriority);
 
-
-
-
-
-
+    return {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority}
 
 }
-
-
 
 
 export {page};

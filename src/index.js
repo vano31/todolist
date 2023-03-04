@@ -1,15 +1,14 @@
 import {listItem, project} from './listitem.js';
 import './style.css';
 import {page} from './layout.js';
+import { add } from 'lodash';
 
-page();
+let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
 
 //Make a separate tab for projects only, tabs for list only, tab for tab deciding
 //via dropdown, and tab for mixing projects and items based on date
 
 let masterArray = project('Master List');
-
-
 
 
 //Just load master array in the beginning of each page load?
@@ -19,7 +18,7 @@ let masterArray = project('Master List');
 
 ////// Create Element Button, Display Local Storage Button, and Delete Local Storage Button Will Be Phased Out ///////////
 
-/*
+
 
 let newitem = document.createElement('button');
 newitem.textContent = 'Click to Create new Item';
@@ -99,7 +98,7 @@ newitem.onclick = function() {
     }));
 
 }
-document.body.appendChild(newitem);
+addsection.appendChild(newitem);
 
 
 let deleteButton = document.createElement('button');
@@ -110,7 +109,7 @@ deleteButton.onclick = function() {
     console.log(JSON.parse(localStorage.getItem('masterArray')));
 
 }
-document.body.appendChild(deleteButton);
+addsection.appendChild(deleteButton);
 
 
 let displayStorageButton = document.createElement('button');
@@ -119,10 +118,10 @@ displayStorageButton.onclick = function() {
 
     console.log(JSON.parse(localStorage.getItem('masterArray')));
 }
-document.body.appendChild(displayStorageButton);
+addsection.appendChild(displayStorageButton);
 
 
-*/
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

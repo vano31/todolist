@@ -7,10 +7,17 @@ let notetemplate = function(title, description, correctdueDate) {
     topsection.classList.add('topsection');
     topsection.textContent = `${title}`;
 
+    let editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('editButton');
+    topsection.appendChild(editButton);
+
+
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.classList.add('deleteButton');
     topsection.appendChild(deleteButton);
+
 
     notebox.appendChild(topsection);
 

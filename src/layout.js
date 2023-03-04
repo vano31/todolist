@@ -40,9 +40,21 @@ let page = function() {
     
 
     let linkForShowAll = document.createElement('button');
-    linkForShowAll.textContent = 'Show All Notes';
+    linkForShowAll.textContent = 'Show All Items';
     linkForShowAll.id = 'linkforShowAll';
     listsection.appendChild(linkForShowAll);
+
+    let linkShowNotesOnly = document.createElement('button');
+    linkShowNotesOnly.textContent = 'Show Notes Only';
+    linkShowNotesOnly.id = 'linkShowNotesOnly';
+    listsection.appendChild(linkShowNotesOnly);
+
+
+    let linkShowProjectsOnly = document.createElement('button');
+    linkShowProjectsOnly.textContent = 'Show Projects Only';
+    linkShowProjectsOnly.id = 'linkShowProjectsOnly';
+    listsection.appendChild(linkShowProjectsOnly);
+     
 
     let linkforPriority = document.createElement('button');
     linkforPriority.textContent = 'Show Priority Only';

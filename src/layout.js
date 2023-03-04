@@ -39,6 +39,11 @@ let page = function() {
     listsection.appendChild(linkforSortByDateDue);
     
 
+    let linkForShowAll = document.createElement('button');
+    linkForShowAll.textContent = 'Show All Notes';
+    linkForShowAll.id = 'linkforShowAll';
+    listsection.appendChild(linkForShowAll);
+
     let linkforPriority = document.createElement('button');
     linkforPriority.textContent = 'Show Priority Only';
     linkforPriority.id = 'linkforPriority';

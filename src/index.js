@@ -2,6 +2,7 @@ import {listItem, project} from './listitem.js';
 import './style.css';
 import {page} from './layout.js';
 import { add } from 'lodash';
+import {notetemplate} from './notetemplate.js'
 
 let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
 

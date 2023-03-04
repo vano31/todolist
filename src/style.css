@@ -25,14 +25,12 @@
     display: grid;
     grid-template-rows: 1fr 5fr;
 
-
 }
 
 #addsection {
 
     background-color: brown;
     grid-row: 1 / 2;
-
 
 }
 
@@ -70,5 +68,7 @@
 #itemsection {
 
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
 
 }

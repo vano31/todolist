@@ -55,7 +55,7 @@ newitem.onclick = function() {
     });
     //console.log(oldSavedMasterArray)
 
-    if (oldSavedMasterArrayJSON && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) {
+    if (oldSavedMasterArrayJSON && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) /* Bascially, if page was not refreshed */ {
 
         masterArray.addItem(newlistItem);
 
@@ -67,7 +67,7 @@ newitem.onclick = function() {
 
     } else {
 
-        if (oldSavedMasterArrayJSON) {
+        if (oldSavedMasterArrayJSON) /* Bascially, if page was refreshed*/ {
         
             for (let x = 0; x < (oldSavedMasterArray.itemArray).length; x++) {
                 masterArray.addItem(oldSavedMasterArray.itemArray[x]);
@@ -98,8 +98,37 @@ newitem.onclick = function() {
         return value;
     }));
 
+    addtoDom();
+
+    
 }
 addsection.appendChild(newitem);
+
+//Just Make a new function that loads straight from localStorage and use that for display on DOM. 
+let addtoDom = function() {
+
+    let localStorageJSON = localStorage.getItem('masterArray');
+    let localStorageParsedData = JSON.parse(localStorageJSON, function(key, value) {
+        if (key == 'correctdueDate') return new Date(value);
+        return value;
+    
+    });
+
+    for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
+
+        //Glitch has something to do with the way notebox is set up...
+
+        let {notebox} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
+        itemsection.appendChild(notebox);
+
+    }
+
+
+    //localStorageParsedData.itemArray[x]
+    //For deletefromDOM, splice from JSON, then just repeat the above function, ie reload everything 
+    
+
+}
 
 
 let deleteButton = document.createElement('button');

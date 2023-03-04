@@ -176,15 +176,24 @@ let addtoDom = function() {
 }
 
 
-let deleteButton = document.createElement('button');
-deleteButton.textContent = 'Delete Local Storage';
-deleteButton.onclick = function() {
+let deleteAllButton = document.createElement('button');
+deleteAllButton.textContent = 'Delete All Notes';
+deleteAllButton.onclick = function() {
 
     localStorage.clear();
     console.log(JSON.parse(localStorage.getItem('masterArray')));
 
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    removeAllChildNodes(itemsection);
+    
+
 }
-addsection.appendChild(deleteButton);
+addsection.appendChild(deleteAllButton);
 
 
 let displayStorageButton = document.createElement('button');

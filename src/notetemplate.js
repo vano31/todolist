@@ -25,7 +25,7 @@ let notetemplate = function(title, description, correctdueDate) {
     notebox.appendChild(bottomsection);
 
     
-    return {notebox, topsection, middlesection, bottomsection}
+    return {notebox, topsection, middlesection, bottomsection, deleteButton}
 
 }
 

@@ -70,5 +70,39 @@
     grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
 
 }
+
+.notebox {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-color: black;
+
+}
+
+.topsection {
+
+    margin-bottom: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.middlesection {
+
+    margin-top: 0;
+
+}
+
+.deleteButton {
+
+    border-radius: 25px;
+
+}
+

@@ -6,10 +6,12 @@ import {notetemplate} from './notetemplate.js'
 
 let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
 
+
 //Make a separate tab for projects only, tabs for list only, tab for tab deciding
 //via dropdown, and tab for mixing projects and items based on date
 
 let masterArray = project('Master List');
+
 
 
 //Just load master array in the beginning of each page load?
@@ -114,12 +116,55 @@ let addtoDom = function() {
     
     });
 
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    removeAllChildNodes(itemsection);
+
+
     for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
 
-        //Glitch has something to do with the way notebox is set up...
+        
+
 
         let {notebox} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
         itemsection.appendChild(notebox);
+
+
+
+        
+
+        //Set up if statement that either adds the entire array if page is empty or adds the last item in the array if array is not empty
+
+        //if array is empty
+
+        /*
+
+        if (!localStorageJSON) {
+
+            let {notebox} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
+            itemsection.appendChild(notebox);
+
+
+        }   else if (localStorageJSON) {
+
+            let y = localStorageParsedData.itemArray.length - 1;
+
+            let {notebox} = notetemplate(localStorageParsedData.itemArray[y].title, localStorageParsedData.itemArray[y].description, localStorageParsedData.itemArray[y].correctdueDate);
+            itemsection.appendChild(notebox);
+            
+
+        }
+
+        */
+
+
+
+
+        //if array is not empty
 
     }
 
@@ -149,6 +194,16 @@ displayStorageButton.onclick = function() {
     console.log(JSON.parse(localStorage.getItem('masterArray')));
 }
 addsection.appendChild(displayStorageButton);
+
+
+
+if (localStorage.length !== 0) {
+
+    addtoDom();
+
+}
+
+
 
 
 

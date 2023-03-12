@@ -7,6 +7,7 @@ import {notetemplate} from './notetemplate.js'
 let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
 
 
+
 //Make a separate tab for projects only, tabs for list only, tab for tab deciding
 //via dropdown, and tab for mixing projects and items based on date
 
@@ -167,6 +168,7 @@ let addtoDom = function() {
 
     }
 
+    deleteButtonFunction();
 
     return {localStorageParsedData};
 
@@ -219,56 +221,65 @@ if (localStorage.length !== 0) {
 let {localStorageParsedData} = addtoDom();
 //console.log(localStorageParsedData);
 
+
 let deleteButtons = document.querySelectorAll('.deleteButton');
 
-for (let x = 0; x < deleteButtons.length; x++ ) {
+let deleteButtonFunction = function() {
 
-    deleteButtons[x].onclick = function() {
+    for (let x = 0; x < deleteButtons.length; x++ ) {
 
-       
+        deleteButtons[x].onclick = function() {
+    
+            let date = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
+            let description = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
+            let title = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
+    
+            //Step 1- Locate the exist item that needs to be removed by making sure that date, description and title match
+    
+            let storedArray = localStorageParsedData.itemArray;
+            //console.log(storedArray);
+            for (let x = 0; x < storedArray.length; x++) {
 
-        let date = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
-        let description = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
-        let title = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
-        
+    
+                if (storedArray[x].title === title && storedArray[x].description === description &&  (`Due: ${(storedArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
+    
+                    //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
+    
+                    storedArray.splice(x, 1);
+                    console.log(storedArray);             
+    
+    
+                    //Step 3- clear the current localStorage and replace it with the localStorageParsedData that contains the now updated array of list-items
+    
+                    localStorage.clear();
+                    localStorageParsedData.itemArray = storedArray;
+                    localStorage.setItem('masterArray', JSON.stringify(localStorageParsedData));
+    
+    
+                    //Step 4- Run addtoDom---- Actually, instead of running addtoDom here, remove the addtoDom function, and run deleteButtonFunction as a part of addtoDom?
+                    addtoDom();
 
-        //Step 1- Locate the exist item that needs to be removed by making sure that date, description and title match
-
-
-        let storedArray = localStorageParsedData.itemArray;
-        //console.log(storedArray);
-        for (let x = 0; x < storedArray.length; x++) {
-
-            
-
-            if (storedArray[x].title === title && storedArray[x].description === description &&  (`Due: ${(storedArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
-
-                //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
-
-                storedArray.splice(x, 1);
-                console.log(storedArray);             
-
-
-                //Step 3- clear the current localStorage and replace it with the localStorageParsedData that contains the now updated array of list-items
-
-                localStorage.clear();
-                localStorageParsedData.itemArray = storedArray;
-                localStorage.setItem('masterArray', JSON.stringify(localStorageParsedData));
-
-
-                //Step 4- Run addtoDom
-                addtoDom();
-
-
+                    console.log(deleteButtons);
+    
+    
+                }
+                
+    
             }
+    
             
-
         }
-
-        
+    
     }
 
+
 }
+
+
+
+deleteButtonFunction();
+
+
 
 /*
 

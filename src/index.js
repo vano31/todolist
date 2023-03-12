@@ -13,14 +13,9 @@ let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, item
 let masterArray = project('Master List');
 
 
-
 //Just load master array in the beginning of each page load?
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-////// Create Element Button, Display Local Storage Button, and Delete Local Storage Button Will Be Phased Out ///////////
-
 
 
 let newitem = document.createElement('button');
@@ -69,7 +64,7 @@ newitem.onclick = function() {
 
     } else {
 
-        if (oldSavedMasterArrayJSON) /* Bascially, if page was refreshed*/ {
+        if (oldSavedMasterArrayJSON) /* Bascially, if page was refreshed and there is data in the local storage*/ {
         
             for (let x = 0; x < (oldSavedMasterArray.itemArray).length; x++) {
                 masterArray.addItem(oldSavedMasterArray.itemArray[x]);
@@ -82,11 +77,11 @@ newitem.onclick = function() {
             let newSavedMasterArrayJSON = JSON.stringify(masterArray);
             localStorage.setItem('masterArray', newSavedMasterArrayJSON);
     
-        }   else {
+        }   else /*If page was refreshed but there is no data in local storage*/ {
     
             masterArray.addItem(newlistItem);
 
-            //console.log(masterArray)
+            
 
             let newJSON = JSON.stringify(masterArray);
             localStorage.setItem('masterArray', newJSON);
@@ -124,56 +119,62 @@ let addtoDom = function() {
 
     removeAllChildNodes(itemsection);
 
-
     for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
 
-        
+    
 
-
-        let {notebox} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
+        let {notebox, editButton, deleteButton, title, description, correctdueDate} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
         itemsection.appendChild(notebox);
 
-
-
-        
-
-        //Set up if statement that either adds the entire array if page is empty or adds the last item in the array if array is not empty
-
-        //if array is empty
-
         /*
+        
+        deleteButton.onclick = function() {
 
-        if (!localStorageJSON) {
-
-            let {notebox} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
-            itemsection.appendChild(notebox);
-
-
-        }   else if (localStorageJSON) {
-
-            let y = localStorageParsedData.itemArray.length - 1;
-
-            let {notebox} = notetemplate(localStorageParsedData.itemArray[y].title, localStorageParsedData.itemArray[y].description, localStorageParsedData.itemArray[y].correctdueDate);
-            itemsection.appendChild(notebox);
-            
-
+            //let {title, description, correctdueDate} = addtoDom();
+        
+            //Use a for loop to search through the localStorage that has the exact title, description, and correctdueDate
+        
+            let localStorageJSON = localStorage.getItem('masterArray');
+            let localStorageParsedData = JSON.parse(localStorageJSON, function(key, value) {
+                if (key == 'correctdueDate') return new Date(value);
+                return value;
+        
+            });
+        
+            for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
+        
+                if (title === localStorageParsedData.itemArray[x].title && description === localStorageParsedData.itemArray[x].description && correctdueDate === localStorageParsedData.itemArray[x].correctdueDate) {
+        
+        
+            //Then splice that out of localStorageData
+                    localStorageParsedData.itemArray.splice(x, 1);
+                    newlocalStorageJSON = JSON.stringify(localStorageParsedData);
+                    localStorage.clear();
+                    localStorage.setItem('masterArray', newlocalStorageJSON);
+                    break;
+        
+                }
+            }
+        
+            //then addtoDom();
+            addtoDom();
+  
+        
         }
 
         */
-
-
-
-
-        //if array is not empty
+        
 
     }
 
 
-    //localStorageParsedData.itemArray[x]
-    //For deletefromDOM, splice from JSON, then just repeat the above function, ie reload everything 
-    
+    return {localStorageParsedData};
 
 }
+
+
+
+
 
 
 let deleteAllButton = document.createElement('button');
@@ -191,7 +192,6 @@ deleteAllButton.onclick = function() {
 
     removeAllChildNodes(itemsection);
     
-
 }
 addsection.appendChild(deleteAllButton);
 
@@ -200,7 +200,10 @@ let displayStorageButton = document.createElement('button');
 displayStorageButton.textContent = 'Display Currect Storage';
 displayStorageButton.onclick = function() {
 
-    console.log(JSON.parse(localStorage.getItem('masterArray')));
+    console.log(JSON.parse(localStorage.getItem('masterArray'), function (key, value) {
+        if (key === 'correctdueDate') return new Date(value);
+        return value;
+    }));
 }
 addsection.appendChild(displayStorageButton);
 
@@ -211,6 +214,92 @@ if (localStorage.length !== 0) {
     addtoDom();
 
 }
+
+
+let {localStorageParsedData} = addtoDom();
+//console.log(localStorageParsedData);
+
+let deleteButtons = document.querySelectorAll('.deleteButton');
+
+for (let x = 0; x < deleteButtons.length; x++ ) {
+
+    deleteButtons[x].onclick = function() {
+
+       
+
+        let date = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
+        let description = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
+        let title = deleteButtons[x].parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
+        
+
+        //Step 1- Locate the exist item that needs to be removed by making sure that date, description and title match
+
+
+        let storedArray = localStorageParsedData.itemArray;
+        //console.log(storedArray);
+        for (let x = 0; x < storedArray.length; x++) {
+
+            
+
+            if (storedArray[x].title === title && storedArray[x].description === description &&  (`Due: ${(storedArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
+
+                //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
+
+                storedArray.splice(x, 1);
+                console.log(storedArray);             
+
+
+                //Step 3- clear the current localStorage and replace it with the localStorageParsedData that contains the now updated array of list-items
+
+                localStorage.clear();
+                localStorageParsedData.itemArray = storedArray;
+                localStorage.setItem('masterArray', JSON.stringify(localStorageParsedData));
+
+
+                //Step 4- Run addtoDom
+                addtoDom();
+
+
+            }
+            
+
+        }
+
+        
+    }
+
+}
+
+/*
+
+deleteButtons[0].addEventListener("click", function() {
+
+    console.log('Poop');
+
+    //find the parent container, make the parent container a variable, and then find the title, description, date and time to delete the note
+    //Use event dispatchment via Stack Overflow?? Also, got to think creatively
+    //--> Use .parentElement.nodename to find the parent, then find the sibling from there
+   //then delete from localStorage first, THEN delete from DOM
+
+});
+
+*/
+
+//console.log(deleteButton);
+
+
+//console.log(localStorageParsedData);
+
+//Cant i just extract the deletebutton individually onto global state and THEN attach a global listener to it HERE?
+
+
+//let {deleteButton} = addtoDom();
+
+
+
+
+
+
 
 
 

@@ -5,18 +5,45 @@ let notetemplate = function(title, description, correctdueDate) {
 
     let topsection = document.createElement('h1');
     topsection.classList.add('topsection');
-    topsection.textContent = `${title}`;
+    //topsection.textContent = `${title}`;
+
+    let titleContainer = document.createElement('div');
+    titleContainer.classList.add('titleContainer');
+    titleContainer.textContent = `${title}`;
+    topsection.appendChild(titleContainer)
+
+
+    let buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('buttonContainer');
 
     let editButton = document.createElement('button');
     editButton.textContent = 'Edit';
     editButton.classList.add('editButton');
-    topsection.appendChild(editButton);
+    buttonContainer.appendChild(editButton);
 
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.classList.add('deleteButton');
-    topsection.appendChild(deleteButton);
+    
+
+    /*
+    deleteButton.onclick = function() {
+        
+        let titleToDelete = title;
+        let descriptionToDelete = description;
+        let correctdueDateToDelete = correctdueDate;
+
+        return {titleToDelete, descriptionToDelete, correctdueDateToDelete}
+
+    }
+    */
+   //Maybe I don't need to return these because every deleteButton is paired to a title, description, and correctDueDate anyway??
+   //return the title, description, and correctdueDate instead...
+
+    buttonContainer.appendChild(deleteButton);
+
+    topsection.appendChild(buttonContainer);
 
 
     notebox.appendChild(topsection);
@@ -32,7 +59,7 @@ let notetemplate = function(title, description, correctdueDate) {
     notebox.appendChild(bottomsection);
 
     
-    return {notebox, topsection, middlesection, bottomsection, deleteButton}
+    return {notebox, topsection, middlesection, bottomsection, editButton, deleteButton, title, description, correctdueDate}
 
 }
 

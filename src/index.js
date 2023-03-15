@@ -93,11 +93,14 @@ newitem.onclick = function() {
 
     }
 
+    /*
+
     console.log(JSON.parse(localStorage.getItem('masterArray'), function (key, value) {
         if (key === 'correctdueDate') return new Date(value);
         return value;
     }));
 
+    */
     addtoDom();
 
     
@@ -121,6 +124,64 @@ let addtoDom = function() {
     }
 
     removeAllChildNodes(itemsection);
+
+    if (localStorageParsedData) {
+
+        for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
+
+    
+
+            let {notebox, editButton, deleteButton, title, description, correctdueDate} = notetemplate(localStorageParsedData.itemArray[x].title, localStorageParsedData.itemArray[x].description, localStorageParsedData.itemArray[x].correctdueDate);
+            itemsection.appendChild(notebox);
+    
+    
+    
+            /*
+            
+            deleteButton.onclick = function() {
+    
+                //let {title, description, correctdueDate} = addtoDom();
+            
+                //Use a for loop to search through the localStorage that has the exact title, description, and correctdueDate
+            
+                let localStorageJSON = localStorage.getItem('masterArray');
+                let localStorageParsedData = JSON.parse(localStorageJSON, function(key, value) {
+                    if (key == 'correctdueDate') return new Date(value);
+                    return value;
+            
+                });
+            
+                for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
+            
+                    if (title === localStorageParsedData.itemArray[x].title && description === localStorageParsedData.itemArray[x].description && correctdueDate === localStorageParsedData.itemArray[x].correctdueDate) {
+            
+            
+                //Then splice that out of localStorageData
+                        localStorageParsedData.itemArray.splice(x, 1);
+                        newlocalStorageJSON = JSON.stringify(localStorageParsedData);
+                        localStorage.clear();
+                        localStorage.setItem('masterArray', newlocalStorageJSON);
+                        break;
+            
+                    }
+                }
+            
+                //then addtoDom();
+                addtoDom();
+      
+            
+            }
+    
+            */
+            
+    
+        }
+
+
+
+    }
+
+    /*
 
     for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
 
@@ -167,14 +228,19 @@ let addtoDom = function() {
         
         }
 
-        */
+        */ /*
         
 
-    }
+    } 
+    */
+    
 
     //deleteButtonFunction();
 
+    /* Delete the return statement of localStorageParsedData for now, see if you can make stuff simple by only getting straight from localStorage each time
+    console.log(localStorageParsedData)
     return {localStorageParsedData};
+    */
 
 }
 
@@ -210,6 +276,8 @@ displayStorageButton.onclick = function() {
         if (key === 'correctdueDate') return new Date(value);
         return value;
     }));
+
+    //console.log(localStorageParsedData)
 }
 addsection.appendChild(displayStorageButton);
 
@@ -221,45 +289,64 @@ if (localStorage.length !== 0) {
 
 }
 
+/* Remove localStorageParsedData for now, take directly from storage
 
 let {localStorageParsedData} = addtoDom();
-//console.log(localStorageParsedData);
+console.log(localStorageParsedData);
 
+*/
 
 let deleteButtons = document.querySelectorAll('.deleteButton');
-
 
 
 document.body.addEventListener('click', function(e) {
 
     if(e.target.textContent === `X`) {
 
-    
+        console.log(`It worked`);
+
         //Change the logic to accomodate for no longer using deleteButtons as an array- You are now only targeting one button
 
             let date = e.target.parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
             let description = e.target.parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
             let title = e.target.parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
+
+            console.log(date);
+            console.log(description);
+            console.log(title);
     
             //Step 1- Locate the exist item that needs to be removed by making sure that date, description and title match
+
+            //////////***Make a copy of local storage data, put into new array, splice the array based on conditionals, clear localStorage, and make new localStorage equal stringifeid version of new array */
     
-            let storedArray = localStorageParsedData.itemArray;
+            //console.log(localStorageParsedData)
+
+            //let storedArray = localStorageParsedData.itemArray;
+
+            //console.log(localStorageParsedData)
             //console.log(storedArray);
-            for (let x = 0; x < storedArray.length; x++) {
+
+            let localStorageParsedData = (JSON.parse(localStorage.getItem('masterArray'), function (key, value) {
+                if (key === 'correctdueDate') return new Date(value);
+                return value;
+            }));
+
+            for (let x = 0; x < localStorageParsedData.itemArray.length; x++) {
 
     
-                if (storedArray[x].title === title && storedArray[x].description === description &&  (`Due: ${(storedArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
+                if (localStorageParsedData.itemArray[x].title === title && localStorageParsedData.itemArray[x].description === description &&  (`Due: ${(localStorageParsedData.itemArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
     
                     //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
     
-                    storedArray.splice(x, 1);
-                    console.log(storedArray);             
+                    localStorageParsedData.itemArray.splice(x, 1);
+                    //console.log(storedArray);  
+                    console.log(localStorageParsedData.itemArray)           
     
     
                     //Step 3- clear the current localStorage and replace it with the localStorageParsedData that contains the now updated array of list-items
     
                     localStorage.clear();
-                    localStorageParsedData.itemArray = storedArray;
+                    //localStorageParsedData.itemArray = storedArray;
                     localStorage.setItem('masterArray', JSON.stringify(localStorageParsedData));
     
     

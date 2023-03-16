@@ -2,9 +2,10 @@ import {listItem, project} from './listitem.js';
 import './style.css';
 import {page} from './layout.js';
 import { add } from 'lodash';
-import {notetemplate} from './notetemplate.js'
+import {notetemplate, additiontemplate} from './notetemplate.js'
 
 let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
+
 
 //let deleteButtons = document.querySelectorAll('.deleteButton');
 
@@ -19,6 +20,21 @@ let masterArray = project('Master List');
 //Just load master array in the beginning of each page load?
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//Add additiontemplate to searchsection on Dom
+
+let {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform} = additiontemplate();
+
+searchsection.appendChild(additionform);
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 let newitem = document.createElement('button');

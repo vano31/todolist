@@ -1,3 +1,5 @@
+import { min } from "lodash";
+
 let notetemplate = function(title, description, correctdueDate) {
 
     let notebox = document.createElement('div');
@@ -63,4 +65,73 @@ let notetemplate = function(title, description, correctdueDate) {
 
 }
 
-export {notetemplate}
+
+let additiontemplate = function() {
+
+
+let additionform = document.createElement('form');
+additionform.classList.add('additionform');
+
+let titleform = document.createElement('input');
+titleform.id = 'titleform';
+let titlelabel = document.createElement('label')
+titlelabel.textContent = 'Title'
+titlelabel.setAttribute('from', 'titleform');
+additionform.appendChild(titlelabel)
+additionform.appendChild(titleform);
+
+let descriptionform = document.createElement('input');
+descriptionform.id = 'descriptionform';
+let descriptionlabel = document.createElement('label')
+descriptionlabel.textContent = 'Description'
+descriptionlabel.setAttribute('from', 'descriptionform');
+additionform.appendChild(descriptionlabel)
+additionform.appendChild(descriptionform);
+
+let monthform = document.createElement('input');
+monthform.id = 'monthform';
+let monthlabel = document.createElement('label')
+monthlabel.textContent = 'Month'
+monthlabel.setAttribute('from', 'monthform');
+additionform.appendChild(monthlabel)
+additionform.appendChild(monthform);
+
+let dateform = document.createElement('input');
+dateform.id = 'dateform';
+let datelabel = document.createElement('label')
+datelabel.textContent = 'Date'
+datelabel.setAttribute('from', 'daetform');
+additionform.appendChild(datelabel)
+additionform.appendChild(dateform);
+
+let yearform = document.createElement('input');
+yearform.id = 'yearform';
+let yearlabel = document.createElement('label')
+yearlabel.textContent = 'Year'
+yearlabel.setAttribute('from', 'yearform');
+additionform.appendChild(yearlabel)
+additionform.appendChild(yearform);
+
+let hourform = document.createElement('input');
+hourform.id = 'hourform';
+let hourlabel = document.createElement('label')
+hourlabel.textContent = 'Hour';
+hourlabel.setAttribute('from', 'hourform');
+additionform.appendChild(hourlabel)
+additionform.appendChild(hourform);
+
+let minuteform = document.createElement('input');
+minuteform.id = 'minuteform';
+let minutelabel = document.createElement('label')
+minutelabel.textContent = 'Minute'
+minutelabel.setAttribute('from', 'minuteform');
+additionform.appendChild(minutelabel)
+additionform.appendChild(minuteform);
+
+//newitem button on index.js will be the submit button
+
+return {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform}
+
+}
+
+export {notetemplate, additiontemplate}

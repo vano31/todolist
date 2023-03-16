@@ -41,21 +41,22 @@ let newitem = document.createElement('button');
 newitem.textContent = 'Click to Create new Item';
 newitem.onclick = function() {
 
-    
-    let newtitle =  prompt('What is the title?');
-    let newdescription = prompt('What is the description?');
+    //Will refactor the prompts into forms
+
+    let newtitle =   titleform.value //prompt('What is the title?');
+    let newdescription = descriptionform.value //prompt('What is the description?');
     
     //Just divide the newduedate variable into month, date, and year prompts.
 
-    let newduemonth = prompt('What month is this item due?');
-    let newduedateofthemonth = prompt(`What date is this item due in ${newduemonth}?`);
-    let newdueyear = prompt('What year is this item due? ');
+    let newduemonth = monthform.value //prompt('What month is this item due?');
+    let newduedateofthemonth = dateform.value //prompt(`What date is this item due in ${newduemonth}?`);
+    let newdueyear = yearform.value //prompt('What year is this item due? ');
 
     //Once divided, insert those values into a brand new newduedate
     //Also divide newduetime into hour and minute (24 hour time)
 
-    let newduehour = prompt('What hour is this due');
-    let newdueminute = prompt(`This item is due on ${newduehour}: `);  
+    let newduehour = hourform.value //prompt('What hour is this due');
+    let newdueminute = minuteform.value //prompt(`This item is due on ${newduehour}: `);  
 
     //Once divided, insert those values into a brand new newduetime
 
@@ -71,7 +72,10 @@ newitem.onclick = function() {
     });
     //console.log(oldSavedMasterArray)
 
-    if (oldSavedMasterArrayJSON && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) /* Bascially, if page was not refreshed */ {
+    console.log(masterArray);
+    console.log(oldSavedMasterArray);
+
+    if (oldSavedMasterArray && masterArray.itemArray.length === oldSavedMasterArray.itemArray.length) /* Bascially, if page was not refreshed */ {
 
         masterArray.addItem(newlistItem);
 
@@ -118,6 +122,9 @@ newitem.onclick = function() {
 
     */
     addtoDom();
+
+    console.log(oldSavedMasterArray);
+    console.log(masterArray);
 
     
 }
@@ -194,7 +201,6 @@ let addtoDom = function() {
         }
 
 
-
     }
 
     /*
@@ -264,7 +270,6 @@ let addtoDom = function() {
 
 
 
-
 let deleteAllButton = document.createElement('button');
 deleteAllButton.textContent = 'Delete All Notes';
 deleteAllButton.onclick = function() {
@@ -279,7 +284,13 @@ deleteAllButton.onclick = function() {
     }
 
     removeAllChildNodes(itemsection);
-    
+    addtoDom();
+   
+    /*
+    masterArray.itemArray = []; //This is done to make sure masterArray.itemArray is an empty array after mass deletion
+    console.log(masterArray);
+    */
+
 }
 addsection.appendChild(deleteAllButton);
 
@@ -352,6 +363,8 @@ document.body.addEventListener('click', function(e) {
     
                 if (localStorageParsedData.itemArray[x].title === title && localStorageParsedData.itemArray[x].description === description &&  (`Due: ${(localStorageParsedData.itemArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
     
+                    
+                    
                     //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
     
                     localStorageParsedData.itemArray.splice(x, 1);

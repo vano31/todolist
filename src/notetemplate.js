@@ -70,10 +70,13 @@ let additiontemplate = function() {
 
 
 let additionform = document.createElement('form');
-additionform.classList.add('additionform');
+//additionform.setAttribute('method', 'post');
+//additionform.setAttribute('action', './index.js')
+additionform.id = 'additionform';
 
 let titleform = document.createElement('input');
 titleform.id = 'titleform';
+titleform.setAttribute('name', 'title');
 let titlelabel = document.createElement('label')
 titlelabel.textContent = 'Title'
 titlelabel.setAttribute('from', 'titleform');
@@ -82,6 +85,7 @@ additionform.appendChild(titleform);
 
 let descriptionform = document.createElement('input');
 descriptionform.id = 'descriptionform';
+descriptionform.setAttribute('name', 'description');
 let descriptionlabel = document.createElement('label')
 descriptionlabel.textContent = 'Description'
 descriptionlabel.setAttribute('from', 'descriptionform');
@@ -90,6 +94,7 @@ additionform.appendChild(descriptionform);
 
 let monthform = document.createElement('input');
 monthform.id = 'monthform';
+monthform.setAttribute('name', 'Month');
 let monthlabel = document.createElement('label')
 monthlabel.textContent = 'Month'
 monthlabel.setAttribute('from', 'monthform');
@@ -98,6 +103,7 @@ additionform.appendChild(monthform);
 
 let dateform = document.createElement('input');
 dateform.id = 'dateform';
+dateform.setAttribute('name', 'date');
 let datelabel = document.createElement('label')
 datelabel.textContent = 'Date'
 datelabel.setAttribute('from', 'daetform');
@@ -106,6 +112,7 @@ additionform.appendChild(dateform);
 
 let yearform = document.createElement('input');
 yearform.id = 'yearform';
+yearform.setAttribute('name', 'year');
 let yearlabel = document.createElement('label')
 yearlabel.textContent = 'Year'
 yearlabel.setAttribute('from', 'yearform');
@@ -114,6 +121,7 @@ additionform.appendChild(yearform);
 
 let hourform = document.createElement('input');
 hourform.id = 'hourform';
+hourform.setAttribute('name', 'hour');
 let hourlabel = document.createElement('label')
 hourlabel.textContent = 'Hour';
 hourlabel.setAttribute('from', 'hourform');
@@ -122,11 +130,34 @@ additionform.appendChild(hourform);
 
 let minuteform = document.createElement('input');
 minuteform.id = 'minuteform';
+minuteform.setAttribute('name', 'minute');
 let minutelabel = document.createElement('label')
 minutelabel.textContent = 'Minute'
 minutelabel.setAttribute('from', 'minuteform');
 additionform.appendChild(minutelabel)
 additionform.appendChild(minuteform);
+
+//Test for submit button functionality, will eventually be removed
+
+/*
+let submitbutton = document.createElement('button');
+submitbutton.textContent = 'Submit';
+submitbutton.setAttribute('type', 'button');
+
+submitbutton.addEventListener('click', function() {
+    console.log(titleform.value);
+    console.log(descriptionform.value);
+    console.log(monthform.value);
+    console.log(dateform.value);
+    console.log(yearform.value);
+    console.log(hourform.value);
+    console.log(minuteform.value);
+})
+
+additionform.appendChild(submitbutton);
+*/
+
+
 
 //newitem button on index.js will be the submit button
 

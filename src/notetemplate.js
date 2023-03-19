@@ -137,27 +137,6 @@ minutelabel.setAttribute('from', 'minuteform');
 additionform.appendChild(minutelabel)
 additionform.appendChild(minuteform);
 
-//Test for submit button functionality, will eventually be removed
-
-/*
-let submitbutton = document.createElement('button');
-submitbutton.textContent = 'Submit';
-submitbutton.setAttribute('type', 'button');
-
-submitbutton.addEventListener('click', function() {
-    console.log(titleform.value);
-    console.log(descriptionform.value);
-    console.log(monthform.value);
-    console.log(dateform.value);
-    console.log(yearform.value);
-    console.log(hourform.value);
-    console.log(minuteform.value);
-})
-
-additionform.appendChild(submitbutton);
-*/
-
-
 
 //newitem button on index.js will be the submit button
 
@@ -165,4 +144,95 @@ return {additionform, titleform, descriptionform, monthform, dateform, yearform,
 
 }
 
-export {notetemplate, additiontemplate}
+
+let edittemplate = function() {
+
+    let editform = document.createElement('form');
+    //editform.setAttribute('method', 'post');
+    //editform.setAttribute('action', './index.js')
+    editform.id = 'editform';
+    
+    let titleform = document.createElement('input');
+    titleform.id = 'titleform-edit';
+    titleform.setAttribute('name', 'title-edit');
+    let titlelabel = document.createElement('label')
+    titlelabel.textContent = 'Title'
+    titlelabel.setAttribute('from', 'titleform-edit');
+    editform.appendChild(titlelabel)
+    editform.appendChild(titleform);
+    
+    let descriptionform = document.createElement('input');
+    descriptionform.id = 'descriptionform-edit';
+    descriptionform.setAttribute('name', 'description-edit');
+    let descriptionlabel = document.createElement('label')
+    descriptionlabel.textContent = 'Description'
+    descriptionlabel.setAttribute('from', 'descriptionform-edit');
+    editform.appendChild(descriptionlabel)
+    editform.appendChild(descriptionform);
+    
+    let monthform = document.createElement('input');
+    monthform.id = 'monthform-edit';
+    monthform.setAttribute('name', 'month-edit');
+    let monthlabel = document.createElement('label')
+    monthlabel.textContent = 'Month'
+    monthlabel.setAttribute('from', 'monthform-edit');
+    editform.appendChild(monthlabel)
+    editform.appendChild(monthform);
+    
+    let dateform = document.createElement('input');
+    dateform.id = 'dateform-edit';
+    dateform.setAttribute('name', 'date-edit');
+    let datelabel = document.createElement('label')
+    datelabel.textContent = 'Date'
+    datelabel.setAttribute('from', 'dateform-edit');
+    editform.appendChild(datelabel)
+    editform.appendChild(dateform);
+    
+    let yearform = document.createElement('input');
+    yearform.id = 'yearform-edit';
+    yearform.setAttribute('name', 'year-edit');
+    let yearlabel = document.createElement('label')
+    yearlabel.textContent = 'Year'
+    yearlabel.setAttribute('from', 'yearform-edit');
+    editform.appendChild(yearlabel)
+    editform.appendChild(yearform);
+    
+    let hourform = document.createElement('input');
+    hourform.id = 'hourform-edit';
+    hourform.setAttribute('name', 'hour-edit');
+    let hourlabel = document.createElement('label')
+    hourlabel.textContent = 'Hour';
+    hourlabel.setAttribute('from', 'hourform-edit');
+    editform.appendChild(hourlabel)
+    editform.appendChild(hourform);
+    
+    let minuteform = document.createElement('input');
+    minuteform.id = 'minuteform-edit';
+    minuteform.setAttribute('name', 'minute-edit');
+    let minutelabel = document.createElement('label')
+    minutelabel.textContent = 'Minute'
+    minutelabel.setAttribute('from', 'minuteform-edit');
+    editform.appendChild(minutelabel)
+    editform.appendChild(minuteform);
+
+    let editformbuttoncontainer = document.createElement('div');
+    editformbuttoncontainer.classList.add(`editformbuttoncontainer`);
+    let saveButton = document.createElement('button');
+    saveButton.classList.add('saveButton');
+    saveButton.textContent = 'Save';
+    editformbuttoncontainer.appendChild(saveButton);
+    let closeButton = document.createElement('button');
+    closeButton.classList.add('closeButton');
+    closeButton.textContent = 'Close';
+    editformbuttoncontainer.appendChild(closeButton);
+    editform.appendChild(editformbuttoncontainer);
+    
+    
+    //newitem button on index.js will be the submit button
+    
+    return {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, editformbuttoncontainer, saveButton, closeButton}
+
+
+}
+
+export {notetemplate, additiontemplate, edittemplate}

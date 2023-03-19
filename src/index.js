@@ -2,7 +2,7 @@ import {listItem, project} from './listitem.js';
 import './style.css';
 import {page} from './layout.js';
 import { add } from 'lodash';
-import {notetemplate, additiontemplate} from './notetemplate.js'
+import {notetemplate, additiontemplate, edittemplate} from './notetemplate.js'
 
 let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforAll, linkforNotesOnly, linkforProjectsOnly, linkforPriority} = page();
 
@@ -14,9 +14,8 @@ let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, item
 let masterArray = project('Master List');
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 /////////////////////////////////////////////////////////////////////////////////////////////
+
 //Add additiontemplate to searchsection on Dom
 
 let {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform} = additiontemplate();
@@ -68,7 +67,6 @@ let domRefresher = function() {
 }
 
 domRefresher();
-
 
 let localStorageEqualizer = function() {
 
@@ -157,8 +155,6 @@ deleteAllButton.onclick = function() {
 addsection.appendChild(deleteAllButton);
 
 
-
-
 let displayStorageButton = document.createElement('button');
 displayStorageButton.textContent = 'Display Currect Storage';
 displayStorageButton.onclick = function() {
@@ -176,13 +172,10 @@ displayStorageButton.onclick = function() {
 addsection.appendChild(displayStorageButton);
 
 
-
-
 let deleteButtons = document.querySelectorAll('.deleteButton');
 document.body.addEventListener('click', function(e) {
 
     if(e.target.textContent === `X`) {
-
 
         //Change the logic to accomodate for no longer using deleteButtons as an array- You are now only targeting one button
 
@@ -190,32 +183,75 @@ document.body.addEventListener('click', function(e) {
             let description = e.target.parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
             let title = e.target.parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
 
-           
-
             for (let x = 0; x < masterArray.itemArray.length; x++) {
 
-    
                 if (masterArray.itemArray[x].title === title && masterArray.itemArray[x].description === description &&  (`Due: ${(masterArray.itemArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
-
-                    
-                    //Step 2- find that list item in localStorageParsedData and splice that list item out of localStorageParsedData
     
                     masterArray.itemArray.splice(x, 1);
                     localStorageEqualizer();
                     domRefresher();
 
-
-    
                 }
                 
-    
             }
-
-    
 
     }
 
 })
+
+
+let editButtons = document.querySelectorAll('.editButton');
+document.body.addEventListener('click', function(e) {
+
+    if(e.target.textContent === `Edit`) {
+
+        //Change the logic to accomodate for no longer using deleteButtons as an array- You are now only targeting one button
+
+            let date = e.target.parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
+            let description = e.target.parentNode.parentNode.parentNode.getElementsByClassName('bottomsection')[0].innerHTML;
+            let title = e.target.parentNode.parentNode.parentNode.getElementsByClassName('titleContainer')[0].innerHTML;
+
+            for (let x = 0; x < masterArray.itemArray.length; x++) {
+
+                if (masterArray.itemArray[x].title === title && masterArray.itemArray[x].description === description &&  (`Due: ${(masterArray.itemArray[x].correctdueDate).toString()}`).valueOf() === date.toString().valueOf() ) {
+                    
+                    //Step 2- Replace the DOM item with an addition template (or maybe, a new edit template)
+
+                    //Step 3- 
+                    
+                    let {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, saveButton, closeButton} = edittemplate();
+
+                    wrapper.appendChild(editform);
+
+
+
+                    /*
+    
+                    masterArray.itemArray.splice(x, 1);
+                    localStorageEqualizer();
+                    domRefresher();
+
+                    */
+
+                }
+                
+            }
+
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -76,6 +76,8 @@ let localStorageEqualizer = function() {
         return value;
     });
 
+    
+
     if (masterArray.itemArray.length !== lsParsed.itemArray.length) {
 
         localStorage.clear();
@@ -84,7 +86,79 @@ let localStorageEqualizer = function() {
 
     }
 
+    
+    /*
+
+    //Will not use
+
+    for (let x = 0; x < masterArray.itemArray.length; x++) {
+
+        for (const property in masterArray.indexArray) {
+
+            if (masterArray.indexArray[x][property] !== lsParsed.itemArray[x][property]) {
+
+                masterArray.indexArray[x][property] = lsParsed.itemArray[x][property];
+
+            }
+
+        }
+
+    }
+
+    */
+    
+
+    /*
+    for (let x = 0; x < masterArray.itemArray.length; x++) {
+
+
+        console.log(masterArray.indexArray[property][x] === lsParsed.itemArray[property][x])
+
+
+    }
+    */
+    
+
 }
+
+let localStorageEditEqualizer = function() {
+
+    
+    let lsJson = localStorage.getItem('masterArray');
+    let lsParsed = JSON.parse(lsJson, function(key, value) {
+        if (key == 'correctdueDate') return new Date(value);
+        return value;
+    });
+
+    for (let x = 0; x < masterArray.itemArray.length; x++) {
+    
+
+        let itemDifferenceChecker = function(object){
+            
+            Object.keys(object).forEach(key => {
+
+                if (object[key] !== lsParsed.itemArray[x][key]) {
+
+                    //lsParsed.itemArray[x].key = object.key;
+                    localStorage.clear();
+                    let maJSON = JSON.stringify(masterArray);
+                    localStorage.setItem('masterArray', maJSON);
+
+                }
+            
+                
+            });
+
+            //return spy;
+        }
+
+        itemDifferenceChecker(masterArray.itemArray[x]);
+    }
+
+    return false
+
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -205,6 +279,8 @@ document.body.addEventListener('click', function(e) {
 
     if(e.target.textContent === `Edit`) {
 
+        //e.target.setAttribute('type', 'button');
+
         //Change the logic to accomodate for no longer using deleteButtons as an array- You are now only targeting one button
 
             let date = e.target.parentNode.parentNode.parentNode.getElementsByClassName('middlesection')[0].innerHTML;
@@ -223,6 +299,41 @@ document.body.addEventListener('click', function(e) {
 
                     wrapper.appendChild(editform);
 
+                    titleform.value = masterArray.itemArray[x].title;
+                    descriptionform.value = masterArray.itemArray[x].description;
+                    monthform.value = masterArray.itemArray[x].dueMonth;
+                    dateform.value = masterArray.itemArray[x].dueDate;
+                    yearform.value = masterArray.itemArray[x].dueYear;
+                    hourform.value = masterArray.itemArray[x].dueHour;
+                    minuteform.value = masterArray.itemArray[x].dueMinute;
+
+                    saveButton.onclick = function() {
+
+
+                        masterArray.itemArray[x].title = titleform.value
+                        masterArray.itemArray[x].description = descriptionform.value
+                        masterArray.itemArray[x].dueMonth = monthform.value
+                        masterArray.itemArray[x].dueDate = dateform.value;
+                        masterArray.itemArray[x].dueYear = yearform.value;
+                        masterArray.itemArray[x].dueHour = hourform.value;
+                        masterArray.itemArray[x].dueMinute = minuteform.value;
+
+                        console.log(masterArray.itemArray[x].title)
+
+                        localStorageEditEqualizer();
+                        localStorageEqualizer();
+                        domRefresher();
+
+                        //return false
+
+
+                    }
+
+                    closeButton.onclick = function() {
+
+                        wrapper.removeChild(editform)
+
+                    }
 
 
                     /*

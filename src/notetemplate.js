@@ -219,10 +219,12 @@ let edittemplate = function() {
     editformbuttoncontainer.classList.add(`editformbuttoncontainer`);
     let saveButton = document.createElement('button');
     saveButton.classList.add('saveButton');
+    saveButton.setAttribute('type', 'button');
     saveButton.textContent = 'Save';
     editformbuttoncontainer.appendChild(saveButton);
     let closeButton = document.createElement('button');
     closeButton.classList.add('closeButton');
+    closeButton.setAttribute('type', 'button');
     closeButton.textContent = 'Close';
     editformbuttoncontainer.appendChild(closeButton);
     editform.appendChild(editformbuttoncontainer);

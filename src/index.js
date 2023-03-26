@@ -276,7 +276,7 @@ document.body.addEventListener('click', function(e) {
 
                     //Step 3- 
                     
-                    let {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, saveButton, closeButton} = edittemplate();
+                    let {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, saveButton, closeButton, radiocontaineredit, priorityYesEdit, priorityNoEdit} = edittemplate();
 
                     wrapper.appendChild(editform);
 
@@ -288,6 +288,9 @@ document.body.addEventListener('click', function(e) {
                     hourform.value = masterArray.itemArray[x].dueHour;
                     minuteform.value = masterArray.itemArray[x].dueMinute;
 
+
+                    
+
                     saveButton.onclick = function() {
 
 
@@ -298,6 +301,14 @@ document.body.addEventListener('click', function(e) {
                         masterArray.itemArray[x].dueYear = yearform.value;
                         masterArray.itemArray[x].dueHour = hourform.value;
                         masterArray.itemArray[x].dueMinute = minuteform.value;
+
+                        if (document.getElementById('priorityYesEdit').checked) {
+                            masterArray.itemArray[x].priority = document.getElementById('priorityYesEdit').value;
+                        }   else if (document.getElementById('priorityNoEdit').checked) {
+                            masterArray.itemArray[x].priority = document.getElementById('priorityNoEdit').value;
+                        }   else {
+                            masterArray.itemArray[x].priority = null
+                        }
 
                         console.log(masterArray.itemArray[x].title)
 

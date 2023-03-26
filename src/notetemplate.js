@@ -274,7 +274,7 @@ let edittemplate = function() {
     priorityNoLabelEdit.id = 'priorityNoEdit';
     radiocontaineredit.appendChild(priorityNoLabelEdit)
 
-    additionform.appendChild(radiocontaineredit);
+    editform.appendChild(radiocontaineredit);
     
     //newitem button on index.js will be the submit button
     

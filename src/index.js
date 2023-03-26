@@ -13,12 +13,14 @@ let {wrapper, sidebar, mainsection, addsection, listsection, searchsection, item
 
 let masterArray = project('Master List');
 
+let displayedArray;
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 //Add additiontemplate to searchsection on Dom
 
-let {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform} = additiontemplate();
+let {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, radiocontainer, priorityYes, priorityNo} = additiontemplate();
 
 searchsection.appendChild(additionform);
 
@@ -85,38 +87,6 @@ let localStorageEqualizer = function() {
         localStorage.setItem('masterArray', maJSON);
 
     }
-
-    
-    /*
-
-    //Will not use
-
-    for (let x = 0; x < masterArray.itemArray.length; x++) {
-
-        for (const property in masterArray.indexArray) {
-
-            if (masterArray.indexArray[x][property] !== lsParsed.itemArray[x][property]) {
-
-                masterArray.indexArray[x][property] = lsParsed.itemArray[x][property];
-
-            }
-
-        }
-
-    }
-
-    */
-    
-
-    /*
-    for (let x = 0; x < masterArray.itemArray.length; x++) {
-
-
-        console.log(masterArray.indexArray[property][x] === lsParsed.itemArray[property][x])
-
-
-    }
-    */
     
 
 }
@@ -149,7 +119,7 @@ let localStorageEditEqualizer = function() {
                 
             });
 
-            //return spy;
+            
         }
 
         itemDifferenceChecker(masterArray.itemArray[x]);
@@ -189,9 +159,20 @@ newitem.onclick = function() {
 
     //In listitem.js, add a parameter to the listitem object and project
     //object that records the date of creation and subsequent update dates and times
+
+    let newpriority;
+
+    if (document.getElementById('priorityYes').checked) {
+        newpriority = document.getElementById('priorityYes').value;
+    }   else if (document.getElementById('priorityNo').checked) {
+        newpriority = document.getElementById('priorityNo').value;
+    }   else {
+        newpriority = null
+    }
+
+    //let newpriority = priorty.value;
     
-    
-    let newlistItem = listItem(newtitle, newdescription, newdueyear, newduemonth, newduedateofthemonth, newduehour, newdueminute);
+    let newlistItem = listItem(newtitle, newdescription, newdueyear, newduemonth, newduedateofthemonth, newduehour, newdueminute, newpriority);
 
     masterArray.addItem(newlistItem);
     localStorageEqualizer();

@@ -1,5 +1,5 @@
 
-let listItem = function(title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute) {
+let listItem = function(title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute, priority) {
     let type = "list-item";
 
 
@@ -7,7 +7,7 @@ let listItem = function(title, description, dueYear, dueMonth, dueDay, dueHour, 
     let correctdueDate = new Date(parseFloat(dueYear), parseFloat(dueMonth -1), parseFloat(dueDay), parseFloat(dueHour), parseFloat(dueMinute));
     //let correctdueTime = correctdueDate.setHours(dueTime);
 
-    return {type, title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute, correctdueDate /*correctdueTime*/}
+    return {type, title, description, dueYear, dueMonth, dueDay, dueHour, dueMinute, correctdueDate, priority /*correctdueTime*/}
 
 }
 

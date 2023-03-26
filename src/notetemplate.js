@@ -23,25 +23,9 @@ let notetemplate = function(title, description, correctdueDate) {
     editButton.classList.add('editButton');
     buttonContainer.appendChild(editButton);
 
-
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'X';
     deleteButton.classList.add('deleteButton');
-    
-
-    /*
-    deleteButton.onclick = function() {
-        
-        let titleToDelete = title;
-        let descriptionToDelete = description;
-        let correctdueDateToDelete = correctdueDate;
-
-        return {titleToDelete, descriptionToDelete, correctdueDateToDelete}
-
-    }
-    */
-   //Maybe I don't need to return these because every deleteButton is paired to a title, description, and correctDueDate anyway??
-   //return the title, description, and correctdueDate instead...
 
     buttonContainer.appendChild(deleteButton);
 
@@ -137,10 +121,41 @@ minutelabel.setAttribute('from', 'minuteform');
 additionform.appendChild(minutelabel)
 additionform.appendChild(minuteform);
 
+/////////////////////////////////////////////////
+
+let radiocontainer = document.createElement('div');
+radiocontainer.classList.add('radiocontainer');
+
+let priorityYes = document.createElement('input');
+priorityYes.setAttribute('type', 'radio');
+priorityYes.id = 'priorityYes';
+priorityYes.setAttribute('name', 'priority');
+priorityYes.setAttribute('value', 'yes');
+radiocontainer.appendChild(priorityYes)
+
+let priorityYesLabel = document.createElement('label');
+priorityYesLabel.textContent = 'Priority';
+priorityYesLabel.id = 'priorityYesLabel';
+radiocontainer.appendChild(priorityYesLabel);
+
+
+let priorityNo = document.createElement('input');
+priorityNo.setAttribute('type', 'radio');
+priorityNo.id = 'priorityNo';
+priorityNo.setAttribute('name', 'priority');
+priorityNo.setAttribute('value', 'no');
+radiocontainer.appendChild(priorityNo);
+
+let priorityNoLabel = document.createElement('label');
+priorityNoLabel.textContent = 'Not Priority'
+priorityNoLabel.id = 'priorityNoLabel';
+radiocontainer.appendChild(priorityNoLabel)
+
+additionform.appendChild(radiocontainer);
 
 //newitem button on index.js will be the submit button
 
-return {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform}
+return {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, radiocontainer, priorityYes, priorityNo}
 
 }
 
@@ -228,11 +243,42 @@ let edittemplate = function() {
     closeButton.textContent = 'Close';
     editformbuttoncontainer.appendChild(closeButton);
     editform.appendChild(editformbuttoncontainer);
+
+    ///////////////////////////////////////////////////////////
     
+    let radiocontaineredit = document.createElement('div');
+    radiocontaineredit.classList.add('radiocontaineredit');
+
+    let priorityYesEdit = document.createElement('input');
+    priorityYesEdit.setAttribute('type', 'radio');
+    priorityYesEdit.id = 'priorityYesEdit';
+    priorityYesEdit.setAttribute('name', 'priority');
+    priorityYesEdit.setAttribute('value', 'yes');
+    radiocontaineredit.appendChild(priorityYesEdit)
+
+    let priorityYesLabelEdit = document.createElement('label');
+    priorityYesLabelEdit.textContent = 'Priority';
+    priorityYesLabelEdit.id = 'priorityYes';
+    radiocontaineredit.appendChild(priorityYesLabelEdit);
+
+
+    let priorityNoEdit = document.createElement('input');
+    priorityNoEdit.setAttribute('type', 'radio');
+    priorityNoEdit.id = 'priorityNoEdit';
+    priorityNoEdit.setAttribute('name', 'priority');
+    priorityNoEdit.setAttribute('value', 'no');
+    radiocontaineredit.appendChild(priorityNoEdit);
+
+    let priorityNoLabelEdit = document.createElement('label');
+    priorityNoLabelEdit.textContent = 'Not Priority';
+    priorityNoLabelEdit.id = 'priorityNoEdit';
+    radiocontaineredit.appendChild(priorityNoLabelEdit)
+
+    additionform.appendChild(radiocontaineredit);
     
     //newitem button on index.js will be the submit button
     
-    return {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, editformbuttoncontainer, saveButton, closeButton}
+    return {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, editformbuttoncontainer, saveButton, closeButton, radiocontaineredit, priorityYesEdit, priorityNoEdit}
 
 
 }

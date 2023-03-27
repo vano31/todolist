@@ -400,6 +400,13 @@ priorityOnlyButton.addEventListener('click', function() {
 
 })
 
+let showAllButton = document.querySelector('#linkforShowAll');
+showAllButton.addEventListener('click', function() {
+
+    domRefresher();
+    
+})
+
 
 
 

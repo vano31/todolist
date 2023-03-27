@@ -15,7 +15,6 @@ let masterArray = project('Master List');
 
 let displayedArray;
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 //Add additiontemplate to searchsection on Dom
@@ -344,6 +343,25 @@ document.body.addEventListener('click', function(e) {
 
 })
 
+let dueDateButton = document.querySelector('#linkforSortByDateDue');
+
+dueDateButton.addEventListener('click', function() {
+
+    displayedArray = masterArray;
+    displayedArray.itemArray.sort((a,b) => {
+        if (a.correctdueDate > b.correctdueDate) return 1;
+        if (a.correctdueDate < b.correctdueDate) return -1;
+        return 0;
+    })
+
+    console.log(displayedArray);
+
+
+
+
+
+
+})
 
 
 

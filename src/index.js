@@ -365,7 +365,6 @@ document.body.addEventListener('click', function(e) {
 })
 
 let dueDateButton = document.querySelector('#linkforSortByDateDue');
-
 dueDateButton.addEventListener('click', function() {
 
     displayedArray = masterArray;
@@ -378,7 +377,25 @@ dueDateButton.addEventListener('click', function() {
     console.log(displayedArray);
     sorteddomRefresher();
 
+})
 
+
+let priorityOnlyButton = document.querySelector('#linkforPriority');
+priorityOnlyButton.addEventListener('click', function() {
+
+    displayedArray = project('Displayed Array');
+
+    //displayedArray = masterArray.itemArray.filter(item => item.priority === 'yes');
+    for (let x = 0; x < masterArray.itemArray.length; x++) {
+        
+        if (masterArray.itemArray[x].priority === 'yes') {
+            displayedArray.addItem(masterArray.itemArray[x]);
+        }
+
+    }
+
+    console.log(displayedArray);
+    sorteddomRefresher();
 
 
 })

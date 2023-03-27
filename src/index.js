@@ -69,6 +69,27 @@ let domRefresher = function() {
 
 domRefresher();
 
+
+let sorteddomRefresher = function() {
+
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+
+    removeAllChildNodes(itemsection);
+
+    for (let x = 0; x < displayedArray.itemArray.length; x++) {
+
+        let {notebox, editButton, deleteButton, title, description, correctdueDate} = notetemplate(displayedArray.itemArray[x].title, displayedArray.itemArray[x].description, displayedArray.itemArray[x].correctdueDate);
+        itemsection.appendChild(notebox);
+
+    }
+
+}
+
+
 let localStorageEqualizer = function() {
 
     let lsJson = localStorage.getItem('masterArray');
@@ -355,8 +376,7 @@ dueDateButton.addEventListener('click', function() {
     })
 
     console.log(displayedArray);
-
-
+    sorteddomRefresher();
 
 
 

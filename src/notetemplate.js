@@ -1,4 +1,4 @@
-import { min } from "lodash";
+import { add, min } from "lodash";
 
 let notetemplate = function(title, description, correctdueDate) {
 
@@ -58,69 +58,82 @@ let additionform = document.createElement('form');
 //additionform.setAttribute('action', './index.js')
 additionform.id = 'additionform';
 
-//let titledivadd = document.createElement('div');
+let titledivadd = document.createElement('div');
 let titleform = document.createElement('input');
 titleform.id = 'titleform';
 titleform.setAttribute('name', 'title');
 let titlelabel = document.createElement('label')
 titlelabel.textContent = 'Title'
 titlelabel.setAttribute('from', 'titleform');
-additionform.appendChild(titlelabel)
-additionform.appendChild(titleform);
+titledivadd.appendChild(titlelabel)
+titledivadd.appendChild(titleform);
+additionform.appendChild(titledivadd);
 
+let descriptiondivadd = document.createElement('div');
 let descriptionform = document.createElement('input');
 descriptionform.id = 'descriptionform';
 descriptionform.setAttribute('name', 'description');
 let descriptionlabel = document.createElement('label')
 descriptionlabel.textContent = 'Description'
 descriptionlabel.setAttribute('from', 'descriptionform');
-additionform.appendChild(descriptionlabel)
-additionform.appendChild(descriptionform);
+descriptiondivadd.appendChild(descriptionlabel)
+descriptiondivadd.appendChild(descriptionform);
+additionform.appendChild(descriptiondivadd);
 
+let monthdivadd = document.createElement('div');
 let monthform = document.createElement('input');
 monthform.id = 'monthform';
 monthform.setAttribute('name', 'Month');
 let monthlabel = document.createElement('label')
 monthlabel.textContent = 'Month'
 monthlabel.setAttribute('from', 'monthform');
-additionform.appendChild(monthlabel)
-additionform.appendChild(monthform);
+monthdivadd.appendChild(monthlabel)
+monthdivadd.appendChild(monthform);
+additionform.appendChild(monthdivadd);
 
+let datedivadd = document.createElement('div');
 let dateform = document.createElement('input');
 dateform.id = 'dateform';
 dateform.setAttribute('name', 'date');
 let datelabel = document.createElement('label')
 datelabel.textContent = 'Date'
 datelabel.setAttribute('from', 'daetform');
-additionform.appendChild(datelabel)
-additionform.appendChild(dateform);
+datedivadd.appendChild(datelabel)
+datedivadd.appendChild(dateform);
+additionform.appendChild(datedivadd);
 
+let yeardivadd = document.createElement('div');
 let yearform = document.createElement('input');
 yearform.id = 'yearform';
 yearform.setAttribute('name', 'year');
 let yearlabel = document.createElement('label')
 yearlabel.textContent = 'Year'
 yearlabel.setAttribute('from', 'yearform');
-additionform.appendChild(yearlabel)
-additionform.appendChild(yearform);
+yeardivadd.appendChild(yearlabel);
+yeardivadd.appendChild(yearform);
+additionform.appendChild(yeardivadd);
 
+let hourdivadd = document.createElement('div');
 let hourform = document.createElement('input');
 hourform.id = 'hourform';
 hourform.setAttribute('name', 'hour');
 let hourlabel = document.createElement('label')
 hourlabel.textContent = 'Hour';
 hourlabel.setAttribute('from', 'hourform');
-additionform.appendChild(hourlabel)
-additionform.appendChild(hourform);
+hourdivadd.appendChild(hourlabel)
+hourdivadd.appendChild(hourform);
+additionform.appendChild(hourdivadd);
 
+let minutedivadd = document.createElement('div');
 let minuteform = document.createElement('input');
 minuteform.id = 'minuteform';
 minuteform.setAttribute('name', 'minute');
 let minutelabel = document.createElement('label')
 minutelabel.textContent = 'Minute'
 minutelabel.setAttribute('from', 'minuteform');
-additionform.appendChild(minutelabel)
-additionform.appendChild(minuteform);
+minutedivadd.appendChild(minutelabel)
+minutedivadd.appendChild(minuteform);
+additionform.appendChild(minutedivadd);
 
 /////////////////////////////////////////////////
 
@@ -156,7 +169,7 @@ additionform.appendChild(radiocontainer);
 
 //newitem button on index.js will be the submit button
 
-return {additionform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, radiocontainer, priorityYes, priorityNo}
+return {additionform, titledivadd, titleform, descriptiondivadd, descriptionform, monthdivadd, monthform, datedivadd, dateform, yeardivadd, yearform, hourdivadd, hourform, minutedivadd, minuteform, radiocontainer, priorityYes, priorityNo}
 
 }
 

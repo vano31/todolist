@@ -58,6 +58,7 @@ let additionform = document.createElement('form');
 //additionform.setAttribute('action', './index.js')
 additionform.id = 'additionform';
 
+//let titledivadd = document.createElement('div');
 let titleform = document.createElement('input');
 titleform.id = 'titleform';
 titleform.setAttribute('name', 'title');
@@ -167,68 +168,83 @@ let edittemplate = function() {
     //editform.setAttribute('action', './index.js')
     editform.id = 'editform';
     
+    let titlediv = document.createElement('div');
     let titleform = document.createElement('input');
     titleform.id = 'titleform-edit';
     titleform.setAttribute('name', 'title-edit');
     let titlelabel = document.createElement('label')
     titlelabel.textContent = 'Title'
     titlelabel.setAttribute('from', 'titleform-edit');
-    editform.appendChild(titlelabel)
-    editform.appendChild(titleform);
+    titlediv.appendChild(titlelabel)
+    titlediv.appendChild(titleform);
+    editform.appendChild(titlediv)
     
+    let descriptiondiv = document.createElement('div');
     let descriptionform = document.createElement('input');
     descriptionform.id = 'descriptionform-edit';
     descriptionform.setAttribute('name', 'description-edit');
     let descriptionlabel = document.createElement('label')
     descriptionlabel.textContent = 'Description'
     descriptionlabel.setAttribute('from', 'descriptionform-edit');
-    editform.appendChild(descriptionlabel)
-    editform.appendChild(descriptionform);
+    descriptiondiv.appendChild(descriptionlabel)
+    descriptiondiv.appendChild(descriptionform);
+    editform.appendChild(descriptiondiv)
     
+    let monthdiv = document.createElement('div');
     let monthform = document.createElement('input');
     monthform.id = 'monthform-edit';
     monthform.setAttribute('name', 'month-edit');
     let monthlabel = document.createElement('label')
     monthlabel.textContent = 'Month'
     monthlabel.setAttribute('from', 'monthform-edit');
-    editform.appendChild(monthlabel)
-    editform.appendChild(monthform);
+    monthdiv.appendChild(monthlabel)
+    monthdiv.appendChild(monthform);
+    editform.appendChild(monthdiv);
     
+    let datediv = document.createElement('div');
     let dateform = document.createElement('input');
     dateform.id = 'dateform-edit';
     dateform.setAttribute('name', 'date-edit');
     let datelabel = document.createElement('label')
     datelabel.textContent = 'Date'
     datelabel.setAttribute('from', 'dateform-edit');
-    editform.appendChild(datelabel)
-    editform.appendChild(dateform);
+    datediv.appendChild(datelabel)
+    datediv.appendChild(dateform);
+    editform.appendChild(datediv);
     
+    let yeardiv = document.createElement('div');
     let yearform = document.createElement('input');
     yearform.id = 'yearform-edit';
     yearform.setAttribute('name', 'year-edit');
     let yearlabel = document.createElement('label')
     yearlabel.textContent = 'Year'
     yearlabel.setAttribute('from', 'yearform-edit');
-    editform.appendChild(yearlabel)
-    editform.appendChild(yearform);
+    yeardiv.appendChild(yearlabel)
+    yeardiv.appendChild(yearform);
+    editform.appendChild(yeardiv);
     
+    let hourdiv = document.createElement('div');
     let hourform = document.createElement('input');
     hourform.id = 'hourform-edit';
     hourform.setAttribute('name', 'hour-edit');
     let hourlabel = document.createElement('label')
     hourlabel.textContent = 'Hour';
     hourlabel.setAttribute('from', 'hourform-edit');
-    editform.appendChild(hourlabel)
-    editform.appendChild(hourform);
+    hourdiv.appendChild(hourlabel)
+    hourdiv.appendChild(hourform);
+    editform.appendChild(hourdiv);
     
+    let minutediv = document.createElement('div');
     let minuteform = document.createElement('input');
     minuteform.id = 'minuteform-edit';
     minuteform.setAttribute('name', 'minute-edit');
     let minutelabel = document.createElement('label')
     minutelabel.textContent = 'Minute'
     minutelabel.setAttribute('from', 'minuteform-edit');
-    editform.appendChild(minutelabel)
-    editform.appendChild(minuteform);
+    minutediv.appendChild(minutelabel)
+    minutediv.appendChild(minuteform);
+    editform.appendChild(minutediv);
+
 
     let editformbuttoncontainer = document.createElement('div');
     editformbuttoncontainer.classList.add(`editformbuttoncontainer`);
@@ -278,7 +294,7 @@ let edittemplate = function() {
     
     //newitem button on index.js will be the submit button
     
-    return {editform, titleform, descriptionform, monthform, dateform, yearform, hourform, minuteform, editformbuttoncontainer, saveButton, closeButton, radiocontaineredit, priorityYesEdit, priorityNoEdit}
+    return {editform, titlediv, titleform, descriptiondiv, descriptionform, monthdiv, monthform, datediv, dateform, yeardiv, yearform, hourdiv, hourform, minutediv, minuteform, editformbuttoncontainer, saveButton, closeButton, radiocontaineredit, priorityYesEdit, priorityNoEdit}
 
 
 }

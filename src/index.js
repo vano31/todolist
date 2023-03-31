@@ -60,14 +60,23 @@ let domRefresher = function() {
 
     for (let x = 0; x < masterArray.itemArray.length; x++) {
 
-        let {notebox, editButton, deleteButton, title, description, correctdueDate} = notetemplate(masterArray.itemArray[x].title, masterArray.itemArray[x].description, masterArray.itemArray[x].correctdueDate);
+        let {notebox, titleContainer, editButton, deleteButton, title, description, correctdueDate} = notetemplate(masterArray.itemArray[x].title, masterArray.itemArray[x].description, masterArray.itemArray[x].correctdueDate);
+        if (masterArray.itemArray[x].priority === 'yes') {
+
+            titleContainer.setAttribute('style', 'font-style: italic; color: black');
+
+        }
         itemsection.appendChild(notebox);
 
     }
 
+    //Within domRefresher I will make a function that will read the priority status of notetemplate. If priority exists, the title will be displayed in italics
+
 }
 
 domRefresher();
+
+
 
 
 let sorteddomRefresher = function() {
@@ -82,7 +91,12 @@ let sorteddomRefresher = function() {
 
     for (let x = 0; x < displayedArray.itemArray.length; x++) {
 
-        let {notebox, editButton, deleteButton, title, description, correctdueDate} = notetemplate(displayedArray.itemArray[x].title, displayedArray.itemArray[x].description, displayedArray.itemArray[x].correctdueDate);
+        let {notebox, titleContainer, editButton, deleteButton, title, description, correctdueDate} = notetemplate(displayedArray.itemArray[x].title, displayedArray.itemArray[x].description, displayedArray.itemArray[x].correctdueDate);
+        if (displayedArray.itemArray[x].priority === 'yes') {
+
+            titleContainer.setAttribute('style', 'font-style: italic; color: black');
+
+        }
         itemsection.appendChild(notebox);
 
     }

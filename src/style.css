@@ -121,6 +121,12 @@ button {
 
 }
 
+#priorityYesLabel {
+
+    margin-right: 15px;
+
+}
+
 #itemsection {
 
     grid-row: 2 / 3;
@@ -221,6 +227,12 @@ button {
 
     width: 58px;
     margin-right: 120.5px;
+
+}
+
+#priorityYesLabelEdit {
+
+    font-style: italic;
 
 }
 

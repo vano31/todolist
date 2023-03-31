@@ -45,7 +45,7 @@ let notetemplate = function(title, description, correctdueDate) {
     notebox.appendChild(bottomsection);
 
     
-    return {notebox, topsection, middlesection, bottomsection, editButton, deleteButton, title, description, correctdueDate}
+    return {notebox, topsection, titleContainer, middlesection, bottomsection, editButton, deleteButton, title, description, correctdueDate}
 
 }
 
@@ -289,7 +289,7 @@ let edittemplate = function() {
 
     let priorityYesLabelEdit = document.createElement('label');
     priorityYesLabelEdit.textContent = 'Priority';
-    priorityYesLabelEdit.id = 'priorityYes';
+    priorityYesLabelEdit.id = 'priorityYesLabelEdit';
     radiocontaineredit.appendChild(priorityYesLabelEdit);
 
 
@@ -302,7 +302,7 @@ let edittemplate = function() {
 
     let priorityNoLabelEdit = document.createElement('label');
     priorityNoLabelEdit.textContent = 'Not Priority';
-    priorityNoLabelEdit.id = 'priorityNoEdit';
+    priorityNoLabelEdit.id = 'priorityNoLabelEdit';
     radiocontaineredit.appendChild(priorityNoLabelEdit)
 
     editform.appendChild(radiocontaineredit);

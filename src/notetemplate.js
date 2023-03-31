@@ -65,6 +65,7 @@ titleform.setAttribute('name', 'title');
 let titlelabel = document.createElement('label')
 titlelabel.textContent = 'Title'
 titlelabel.setAttribute('from', 'titleform');
+titlelabel.classList.add('addlabel');
 titledivadd.appendChild(titlelabel)
 titledivadd.appendChild(titleform);
 additionform.appendChild(titledivadd);
@@ -75,6 +76,7 @@ descriptionform.id = 'descriptionform';
 descriptionform.setAttribute('name', 'description');
 let descriptionlabel = document.createElement('label')
 descriptionlabel.textContent = 'Description'
+descriptionlabel.classList.add('addlabel');
 descriptionlabel.setAttribute('from', 'descriptionform');
 descriptiondivadd.appendChild(descriptionlabel)
 descriptiondivadd.appendChild(descriptionform);
@@ -86,6 +88,7 @@ monthform.id = 'monthform';
 monthform.setAttribute('name', 'Month');
 let monthlabel = document.createElement('label')
 monthlabel.textContent = 'Month'
+monthlabel.classList.add('addlabel')
 monthlabel.setAttribute('from', 'monthform');
 monthdivadd.appendChild(monthlabel)
 monthdivadd.appendChild(monthform);
@@ -97,7 +100,8 @@ dateform.id = 'dateform';
 dateform.setAttribute('name', 'date');
 let datelabel = document.createElement('label')
 datelabel.textContent = 'Date'
-datelabel.setAttribute('from', 'daetform');
+datelabel.classList.add('addlabel')
+datelabel.setAttribute('from', 'dateform');
 datedivadd.appendChild(datelabel)
 datedivadd.appendChild(dateform);
 additionform.appendChild(datedivadd);
@@ -108,6 +112,7 @@ yearform.id = 'yearform';
 yearform.setAttribute('name', 'year');
 let yearlabel = document.createElement('label')
 yearlabel.textContent = 'Year'
+yearlabel.classList.add('addlabel')
 yearlabel.setAttribute('from', 'yearform');
 yeardivadd.appendChild(yearlabel);
 yeardivadd.appendChild(yearform);
@@ -119,6 +124,7 @@ hourform.id = 'hourform';
 hourform.setAttribute('name', 'hour');
 let hourlabel = document.createElement('label')
 hourlabel.textContent = 'Hour';
+hourlabel.classList.add('addlabel')
 hourlabel.setAttribute('from', 'hourform');
 hourdivadd.appendChild(hourlabel)
 hourdivadd.appendChild(hourform);
@@ -130,6 +136,7 @@ minuteform.id = 'minuteform';
 minuteform.setAttribute('name', 'minute');
 let minutelabel = document.createElement('label')
 minutelabel.textContent = 'Minute'
+minutelabel.classList.add('addlabel')
 minutelabel.setAttribute('from', 'minuteform');
 minutedivadd.appendChild(minutelabel)
 minutedivadd.appendChild(minuteform);
@@ -138,7 +145,8 @@ additionform.appendChild(minutedivadd);
 /////////////////////////////////////////////////
 
 let radiocontainer = document.createElement('div');
-radiocontainer.classList.add('radiocontainer');
+//radiocontainer.classList.add('radiocontainer');
+radiocontainer.id = 'radiocontainer';
 
 let priorityYes = document.createElement('input');
 priorityYes.setAttribute('type', 'radio');
@@ -276,7 +284,8 @@ let edittemplate = function() {
     ///////////////////////////////////////////////////////////
     
     let radiocontaineredit = document.createElement('div');
-    radiocontaineredit.classList.add('radiocontaineredit');
+    //radiocontaineredit.classList.add('radiocontaineredit');
+    radiocontaineredit.id = 'radiocontaineredit';
 
     let priorityYesEdit = document.createElement('input');
     priorityYesEdit.setAttribute('type', 'radio');

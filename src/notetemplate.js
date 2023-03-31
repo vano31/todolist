@@ -71,7 +71,7 @@ titledivadd.appendChild(titleform);
 additionform.appendChild(titledivadd);
 
 let descriptiondivadd = document.createElement('div');
-let descriptionform = document.createElement('input');
+let descriptionform = document.createElement('textarea');
 descriptionform.id = 'descriptionform';
 descriptionform.setAttribute('name', 'description');
 let descriptionlabel = document.createElement('label')

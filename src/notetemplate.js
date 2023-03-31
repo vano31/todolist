@@ -209,7 +209,7 @@ let edittemplate = function() {
     editform.appendChild(titlediv)
     
     let descriptiondiv = document.createElement('div');
-    let descriptionform = document.createElement('input');
+    let descriptionform = document.createElement('textarea');
     descriptionform.id = 'descriptionform-edit';
     descriptionform.setAttribute('name', 'description-edit');
     let descriptionlabel = document.createElement('label')

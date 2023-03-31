@@ -288,7 +288,7 @@ label {
     
 }
 
-#descriptionform {
+#descriptionform, #descriptionform-edit {
 
     height: 45px;
     resize: none;

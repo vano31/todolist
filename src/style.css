@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+
+
+
 .wrapper, html, body {
 
 
@@ -5,7 +10,14 @@
     margin: 0;
     border-style: solid;
     border-color: black;
+    font-family: 'Space Mono', monospace;
 
+
+}
+
+button {
+
+    font-family: 'Space Mono', monospace;;
 
 }
 
@@ -65,7 +77,7 @@
 
 #listsectiondiv {
 
-    margin-top: 120px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -180,7 +192,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     grid-column: 2 / 3;
     align-items: center;
     margin-top: 10px;
@@ -191,6 +203,12 @@
     */
 
 
+
+}
+
+label {
+
+    font-weight: bold;
 
 }
 

@@ -17,13 +17,16 @@
 
 button {
 
-    font-family: 'Space Mono', monospace;;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    background-color: #964df0;
+    color: white;
 
 }
 
 .wrapper {
 
-    background-color: wheat;
+    background-color: black;
     display: grid;
     grid-template-columns: 1fr 7fr;
 
@@ -31,7 +34,7 @@ button {
 
 #sidebar {
 
-    background-color: lightslategray;
+    background-color: black;
     grid-column: 1 / 2;
 
     display: grid;
@@ -95,7 +98,7 @@ button {
 
 #mainsection {
 
-    background-color: wheat;
+    background-color: black;
     grid-column: 2 / 3;
 
     display: grid;
@@ -108,7 +111,7 @@ button {
 
 #searchsection {
 
-    background-color: gray;
+    background-color: black;
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -123,7 +126,7 @@ button {
     grid-row: 2 / 3;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
     gap: 10px;
 
 }
@@ -135,6 +138,12 @@ button {
     align-items: center;
     border-style: dotted;
     border-color: black;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 12px;
+    background-color: #575659;
+    color: white;
+    border-radius: 25px;
 
 }
 
@@ -171,7 +180,7 @@ button {
 
     position: fixed;
     border-style: solid;
-    border-color: red;
+    border-color: #964df0 ;
 
     height: 600px;
     width: 1000px;
@@ -181,7 +190,7 @@ button {
     transform: translate(-50%, -50%);
 
     z-index: 2;
-    background-color: brown;
+    background-color: black;
     
 
 
@@ -209,6 +218,8 @@ button {
 label {
 
     font-weight: bold;
+    color: #964df0;
+    font-size: 16.5px;
 
 }
 

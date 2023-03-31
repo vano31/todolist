@@ -61,6 +61,7 @@ additionform.id = 'additionform';
 let titledivadd = document.createElement('div');
 let titleform = document.createElement('input');
 titleform.id = 'titleform';
+titleform.placeholder = 'Insert Title Here';
 titleform.setAttribute('name', 'title');
 let titlelabel = document.createElement('label')
 titlelabel.textContent = 'Title'
@@ -73,6 +74,7 @@ additionform.appendChild(titledivadd);
 let descriptiondivadd = document.createElement('div');
 let descriptionform = document.createElement('textarea');
 descriptionform.id = 'descriptionform';
+descriptionform.placeholder = 'Insert Description of Task Here';
 descriptionform.setAttribute('name', 'description');
 let descriptionlabel = document.createElement('label')
 descriptionlabel.textContent = 'Description'
@@ -85,6 +87,7 @@ additionform.appendChild(descriptiondivadd);
 let monthdivadd = document.createElement('div');
 let monthform = document.createElement('input');
 monthform.id = 'monthform';
+monthform.placeholder = '01';
 monthform.setAttribute('name', 'Month');
 let monthlabel = document.createElement('label')
 monthlabel.textContent = 'Month'
@@ -97,6 +100,7 @@ additionform.appendChild(monthdivadd);
 let datedivadd = document.createElement('div');
 let dateform = document.createElement('input');
 dateform.id = 'dateform';
+dateform.placeholder = '31'
 dateform.setAttribute('name', 'date');
 let datelabel = document.createElement('label')
 datelabel.textContent = 'Date'
@@ -109,6 +113,7 @@ additionform.appendChild(datedivadd);
 let yeardivadd = document.createElement('div');
 let yearform = document.createElement('input');
 yearform.id = 'yearform';
+yearform.placeholder = '2023';
 yearform.setAttribute('name', 'year');
 let yearlabel = document.createElement('label')
 yearlabel.textContent = 'Year'
@@ -121,6 +126,7 @@ additionform.appendChild(yeardivadd);
 let hourdivadd = document.createElement('div');
 let hourform = document.createElement('input');
 hourform.id = 'hourform';
+hourform.placeholder = '15';
 hourform.setAttribute('name', 'hour');
 let hourlabel = document.createElement('label')
 hourlabel.textContent = 'Hour';
@@ -133,6 +139,7 @@ additionform.appendChild(hourdivadd);
 let minutedivadd = document.createElement('div');
 let minuteform = document.createElement('input');
 minuteform.id = 'minuteform';
+minuteform.placeholder = '30';
 minuteform.setAttribute('name', 'minute');
 let minutelabel = document.createElement('label')
 minutelabel.textContent = 'Minute'
@@ -157,6 +164,7 @@ radiocontainer.appendChild(priorityYes)
 
 let priorityYesLabel = document.createElement('label');
 priorityYesLabel.textContent = 'Priority';
+priorityYesLabel.setAttribute('style', 'font-style: italic');
 priorityYesLabel.id = 'priorityYesLabel';
 radiocontainer.appendChild(priorityYesLabel);
 

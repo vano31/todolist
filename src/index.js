@@ -155,6 +155,7 @@ let localStorageEditEqualizer = function() {
 
 let newitem = document.createElement('button');
 newitem.textContent = 'Click to Create new Item';
+newitem.id = 'newitemButton'
 newitem.onclick = function() {
 
 
@@ -205,6 +206,7 @@ addsection.appendChild(newitem);
 
 let deleteAllButton = document.createElement('button');
 deleteAllButton.textContent = 'Delete All Notes';
+deleteAllButton.id = 'deleteAllButton'
 deleteAllButton.onclick = function() {
 
 
@@ -229,6 +231,8 @@ deleteAllButton.onclick = function() {
 }
 addsection.appendChild(deleteAllButton);
 
+//No Longer Need Delete Storage Button For Display
+/*
 
 let displayStorageButton = document.createElement('button');
 displayStorageButton.textContent = 'Display Currect Storage';
@@ -245,6 +249,8 @@ displayStorageButton.onclick = function() {
 
 }
 addsection.appendChild(displayStorageButton);
+
+*/
 
 
 let deleteButtons = document.querySelectorAll('.deleteButton');
@@ -404,7 +410,7 @@ let showAllButton = document.querySelector('#linkforShowAll');
 showAllButton.addEventListener('click', function() {
 
     domRefresher();
-    
+
 })
 
 

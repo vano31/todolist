@@ -33,16 +33,19 @@ let page = function() {
 
     //Will only show Sort By Date/Time, Show Priority Only, and Tags
 
+    let listsectiondiv = document.createElement('div');
+    listsectiondiv.id = 'listsectiondiv';
+
     let linkforSortByDateDue = document.createElement('button');
     linkforSortByDateDue.textContent = 'Sort By Date Due';
     linkforSortByDateDue.id = 'linkforSortByDateDue';
-    listsection.appendChild(linkforSortByDateDue);
+    listsectiondiv.appendChild(linkforSortByDateDue);
     
 
     let linkForShowAll = document.createElement('button');
     linkForShowAll.textContent = 'Show All Items';
     linkForShowAll.id = 'linkforShowAll';
-    listsection.appendChild(linkForShowAll);
+    listsectiondiv.appendChild(linkForShowAll);
 
     /*
 
@@ -63,7 +66,9 @@ let page = function() {
     let linkforPriority = document.createElement('button');
     linkforPriority.textContent = 'Show Priority Only';
     linkforPriority.id = 'linkforPriority';
-    listsection.appendChild(linkforPriority);
+    listsectiondiv.appendChild(linkforPriority);
+
+    listsection.appendChild(listsectiondiv);
 
     return {wrapper, sidebar, mainsection, addsection, listsection, searchsection, itemsection, linkforSortByDateDue, linkforPriority}
 

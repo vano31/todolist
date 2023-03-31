@@ -274,23 +274,8 @@ let edittemplate = function() {
     minutediv.appendChild(minuteform);
     editform.appendChild(minutediv);
 
-
-    let editformbuttoncontainer = document.createElement('div');
-    editformbuttoncontainer.classList.add(`editformbuttoncontainer`);
-    let saveButton = document.createElement('button');
-    saveButton.classList.add('saveButton');
-    saveButton.setAttribute('type', 'button');
-    saveButton.textContent = 'Save';
-    editformbuttoncontainer.appendChild(saveButton);
-    let closeButton = document.createElement('button');
-    closeButton.classList.add('closeButton');
-    closeButton.setAttribute('type', 'button');
-    closeButton.textContent = 'Close';
-    editformbuttoncontainer.appendChild(closeButton);
-    editform.appendChild(editformbuttoncontainer);
-
     ///////////////////////////////////////////////////////////
-    
+
     let radiocontaineredit = document.createElement('div');
     //radiocontaineredit.classList.add('radiocontaineredit');
     radiocontaineredit.id = 'radiocontaineredit';
@@ -321,6 +306,26 @@ let edittemplate = function() {
     radiocontaineredit.appendChild(priorityNoLabelEdit)
 
     editform.appendChild(radiocontaineredit);
+
+
+    //////////////////////////////////////////////////////////////
+
+    let editformbuttoncontainer = document.createElement('div');
+    editformbuttoncontainer.classList.add(`editformbuttoncontainer`);
+    let saveButton = document.createElement('button');
+    saveButton.classList.add('saveButton');
+    saveButton.setAttribute('type', 'button');
+    saveButton.textContent = 'Save';
+    editformbuttoncontainer.appendChild(saveButton);
+    let closeButton = document.createElement('button');
+    closeButton.classList.add('closeButton');
+    closeButton.setAttribute('type', 'button');
+    closeButton.textContent = 'Close';
+    editformbuttoncontainer.appendChild(closeButton);
+    editform.appendChild(editformbuttoncontainer);
+
+    
+   
     
     //newitem button on index.js will be the submit button
     

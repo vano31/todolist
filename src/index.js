@@ -224,7 +224,7 @@ deleteAllButton.id = 'deleteAllButton'
 deleteAllButton.onclick = function() {
 
 
-    for (let x = 0; x < masterArray.itemArray.length; x++) {
+    for (let x = (masterArray.itemArray.length - 1); x >= 0; x--) {
 
         masterArray.removeItem(masterArray.itemArray[x]);
 
@@ -246,7 +246,7 @@ deleteAllButton.onclick = function() {
 addsection.appendChild(deleteAllButton);
 
 //No Longer Need Delete Storage Button For Display
-/*
+
 
 let displayStorageButton = document.createElement('button');
 displayStorageButton.textContent = 'Display Currect Storage';
@@ -264,7 +264,7 @@ displayStorageButton.onclick = function() {
 }
 addsection.appendChild(displayStorageButton);
 
-*/
+
 
 
 let deleteButtons = document.querySelectorAll('.deleteButton');

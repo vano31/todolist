@@ -262,7 +262,7 @@ displayStorageButton.onclick = function() {
     console.log(lsParsed);
 
 }
-addsection.appendChild(displayStorageButton);
+//addsection.appendChild(displayStorageButton);
 
 
 

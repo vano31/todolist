@@ -29,6 +29,16 @@ searchsection.appendChild(additionform);
 
 let pageReloader = function() {
 
+
+    if (!localStorage.getItem('masterArray')) {
+
+
+        let emptyJSON = JSON.stringify(masterArray);
+        localStorage.setItem('masterArray', emptyJSON );
+
+
+    }
+
     if ((localStorage.getItem('masterArray')).length > 0) {
 
         let lsJson = localStorage.getItem('masterArray');
@@ -43,6 +53,8 @@ let pageReloader = function() {
         }
 
     }
+
+   
 
 }
 
@@ -209,6 +221,16 @@ newitem.onclick = function() {
     
     let newlistItem = listItem(newtitle, newdescription, newdueyear, newduemonth, newduedateofthemonth, newduehour, newdueminute, newpriority);
 
+    /*
+    if (newlistItem.correctdueDate === 'Invalid Date') {
+
+        alert(`Date is Invalid, Please Try Again`);
+        return
+
+    }
+
+    */
+
     masterArray.addItem(newlistItem);
     localStorageEqualizer();
     domRefresher();
@@ -226,7 +248,8 @@ deleteAllButton.onclick = function() {
 
     for (let x = (masterArray.itemArray.length - 1); x >= 0; x--) {
 
-        masterArray.removeItem(masterArray.itemArray[x]);
+        //masterArray.removeItem(masterArray.itemArray[x]);
+        masterArray.itemArray.splice(x,1);
 
     }
 
@@ -241,6 +264,7 @@ deleteAllButton.onclick = function() {
 
     console.log(masterArray);
     console.log(lsParsed);
+
 
 }
 addsection.appendChild(deleteAllButton);
